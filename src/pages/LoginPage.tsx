@@ -1,9 +1,12 @@
 import { LoginForm } from '../components/auth/LoginForm';
 
-export function LoginPage() {
+interface LoginPageProps {
+  onLogin: (email: string, password: string) => void;
+}
+
+export function LoginPage({ onLogin }: LoginPageProps) {
   const handleLogin = (email: string, password: string) => {
-    // TODO: Implement actual authentication logic
-    console.log('Login attempt:', { email, password });
+    onLogin(email, password);
   };
 
   return (

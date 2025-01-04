@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Lock, LogIn } from 'lucide-react';
+import { LogoutButton } from './LogoutForm';
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -15,7 +16,7 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-sm">
+      <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-sm">
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700">
           Email

@@ -3,10 +3,21 @@ import { Video } from 'lucide-react';
 import { VideoInput } from './components/VideoInput';
 import { Summary } from './components/Summary';
 import { LoginPage } from './pages/LoginPage';
+import { LogoutButton } from './components/auth/LogoutForm';
 
 function App() {
   const [summary, setSummary] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = (email: string, password: string) => {
+    // TODO: Implement actual authentication logic
+    if (email === 'user@example.com' && password === 'password') {
+      setIsAuthenticated(true);
+    } else {
+      alert('Invalid email or password');
+    }
+  };
 
   const handleSubmit = async (url: string) => {
     setIsLoading(true);
@@ -24,10 +35,13 @@ function App() {
     }
   };
 
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={handleLogin} />;
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8 text-center">
-          <LoginPage />
         <div className="flex flex-col items-center gap-8">
           <div>
             <div className="flex items-center justify-center gap-4 mb-4">
